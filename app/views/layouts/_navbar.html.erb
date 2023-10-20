@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light mb-4" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">MiningApp</a>
+    <% if user_signed_in? %>
+      <div class="d-flex">      
+        <div class="dropdown">
+            <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi! <%= get_username(current_user.email).humanize %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Role: <%= current_user.role.humanize %></a></li> 
+              <li><a class="dropdown-item" href="#">Department: <%= current_user.department.name.humanize %></a></li> 
+              <hr />
+               <li><%= link_to "Sign out", destroy_user_session_path, class: "text-center dropdown-item", data: { turbo_method: :delete } %></li>
+            </ul>
+        </div>
+        
+      </div>
+    <% end %>        
+  </div>
+</nav>
